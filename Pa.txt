@@ -1,0 +1,141 @@
+setTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(startTime.getText().toString()==null||endTime.getText().toString()==null){
+                    Toast.makeText(getApplicationContext(), "Make sure you entered both the start time and end time", Toast.LENGTH_LONG).show();
+                } else{
+                    timeOne = startTime.getText().toString();
+                    timeTwo = endTime.getText().toString();
+                    profileContent.set( 0,timeOne);
+                    profileContent.set( 1,timeTwo);
+                    profileOutput = "";
+                    for(int i=0; i<profileContent.size(); i++){
+                        if (i==0){
+                            profileOutput += "The working hours are from " + profileContent.get(i)+" to " + profileContent.get(i+1);
+                        }
+                    }
+
+                    txtp.setText(profileOutput);
+
+                }
+
+            }
+        });
+
+        addService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if(serviceName.getText().toString()==null){
+                    Toast.makeText(getApplicationContext(), "Make sure you entered a service name", Toast.LENGTH_LONG).show();
+                    return ;
+                }
+
+                Boolean exist1 = false;
+
+                Boolean exist2 = false;
+
+                for(int i = 0; i<adminSucActivity.services.size();i++){
+                    if (adminSucActivity.services.get(i).name.toString().equals(serviceName.getText().toString())){
+                        exist1 = true;
+                        break;
+                    }
+                }
+
+                for(int i = 0; i<profileContent.size();i++){
+                    if (profileContent.get(i).toString().equals(serviceName.getText().toString())){
+                        exist2 = true;
+                        break;
+                    }
+                }
+
+
+                if(exist1 == false){
+                    Toast.makeText(getApplicationContext(), "This service is not provided by the Administrator", Toast.LENGTH_LONG).show();
+                } else if(exist2 == true){
+                    Toast.makeText(getApplicationContext(), "This service is already set at the branch", Toast.LENGTH_LONG).show();
+                }
+                else if(exist1 == true && exist2 == false){
+                    profileContent.add(timeOne);
+                    profileOutput = "";
+                    for(int i=0; i<profileContent.size(); i++){
+                        if (i==0){
+                            profileOutput += "The working hours are from " + profileContent.get(i)+" to " + profileContent.get(i+1);
+                        }
+
+                        if(i==2){
+                            profileOutput += "These services bellow are available at this branch now:  ";
+                        }
+
+                        if(i == profileContent.size()-1){
+                            profileOutput += profileContent.get(i)+".";
+                        }
+                        else if(i>=2){
+                            profileOutput += profileContent.get(i)+", ";
+                        }
+                    }
+
+                    txtp.setText(profileOutput);
+
+                    Toast.makeText(getApplicationContext(), "Service added successfully", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        deleteService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(serviceName.getText().toString()==null){
+                    Toast.makeText(getApplicationContext(), "Make sure you entered a service name", Toast.LENGTH_LONG).show();
+                    return ;
+                }
+
+
+
+                Boolean exist2 = false;
+
+
+                for(int i = 0; i<profileContent.size();i++){
+                    if (profileContent.get(i).toString().equals(serviceName.getText().toString())){
+                        profileContent.remove(i);
+                        exist2 = true;
+                        break;
+                    }
+                }
+
+
+                if(exist2 == false){
+                    Toast.makeText(getApplicationContext(), "There is no such a service in the branch", Toast.LENGTH_LONG).show();
+                }
+                else if(exist2 == true){
+                    profileContent.add(timeOne);
+                    profileOutput = "";
+                    for(int i=0; i<profileContent.size(); i++){
+                        if (i==0){
+                            profileOutput += "The working hours are from " + profileContent.get(i)+" to " + profileContent.get(i+1);
+                        }
+
+                        if(i==2){
+                            profileOutput += "These services bellow are available at this branch now:  ";
+                        }
+
+                        if(i == profileContent.size()-1){
+                            profileOutput += profileContent.get(i)+".";
+                        }
+                        else if(i>=2){
+                            profileOutput += profileContent.get(i)+", ";
+                        }
+                    }
+
+                    txtp.setText(profileOutput);
+
+                    Toast.makeText(getApplicationContext(), "Service removed successfully.", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });

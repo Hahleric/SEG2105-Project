@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.login2">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LOGIN2">
+        <activity android:name=".checkRequestActivity"></activity>
+        <activity android:name=".ratingActivity" />
+        <activity android:name=".feedbackActivity" />
+        <activity android:name=".requestActivity" />
+        <activity android:name=".LogSucActivity2" />
+        <activity
+            android:name=".CusSucActivity"
+            android:label="@string/title_activity_cus_suc"
+            android:theme="@style/Theme.LOGIN2.NoActionBar" />
+        <activity android:name=".adminSucActivity" />
+        <activity android:name=".LogSucActivity" />
+        <activity android:name=".CusRegSucActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

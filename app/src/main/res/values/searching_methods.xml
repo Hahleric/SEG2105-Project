@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="method">
+        <item>Search Branches by Working Hour</item>
+        <item>Search Branches by Address</item>
+        <item>Search Branches by Service</item>
+    </string-array>
+
+</resources>
